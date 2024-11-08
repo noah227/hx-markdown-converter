@@ -1,0 +1,80 @@
+{
+	"id": "hx-markdown-converter",
+	"name": "hx-markdown-converter",
+	"description": "Markdown转换工具",
+	"displayName": "转换Markdown文件到常用格式",
+	"version": "0.1.0",
+	"publisher": "Noah Young",
+	"engines": {
+		"HBuilderX": "^2.7.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./extension",
+	"scripts": {
+		"build": "rollup -c rollup.config.js"
+	},
+	"activationEvents": [
+		"onCommand:extension.markdownToPdf",
+		"onCommand:extension.markdownToWord",
+		"onCommand:extension.markdownToHtml"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.markdownToPdf",
+				"title": "转PDF"
+			},
+			{
+				"command": "extension.markdownToWord",
+				"title": "转Word"
+			},
+			{
+				"command": "extension.markdownToHtml",
+				"title": "转Html"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"id": "extension.markdownConvert",
+					"title": "Markdown转换",
+					"group": "z_commands",
+					"when": "workspaceFolderRelativePath =~ /(.md)$/"
+				},
+				{
+					"command": "extension.markdownToPdf",
+					"group": "extension.markdownConvert@1"
+				},
+				{
+					"command": "extension.markdownToWord",
+					"group": "extension.markdownConvert@2"
+				},
+				{
+					"command": "extension.markdownToHtml",
+					"group": "extension.markdownConvert@3"
+				},
+				{
+					"group": "z_commands"
+				}
+			]
+		}
+	},
+	"extensionDependencies": [
+		"plugin-manager"
+	],
+	"dependencies": {
+		"@rollup/plugin-commonjs": "^24.1.0",
+		"@rollup/plugin-json": "^6.0.0",
+		"@rollup/plugin-node-resolve": "^15.0.2",
+		"@rollup/plugin-terser": "^0.4.3",
+		"@rollup/plugin-typescript": "^11.1.0",
+		"@types/node": "^20.3.3",
+		"mdpdf": "^3.0.4",
+		"rollup": "^3.23.0",
+		"rollup-plugin-copy": "^3.5.0",
+		"tslib": "^2.5.2",
+		"typescript": "^5.0.4"
+	}
+}

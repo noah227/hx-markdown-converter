@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "declaration": true,
+        "declarationMap": true,
+        "declarationDir": "./src/types",
+        "rootDir": "./src",
+        "baseUrl": "./src",
+        "types": [
+            "@types/node"
+        ],
+        "lib": [
+            "esnext"
+        ]
+    }
+}
