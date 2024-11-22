@@ -71,6 +71,7 @@
 		"@rollup/plugin-terser": "^0.4.3",
 		"@rollup/plugin-typescript": "^11.1.0",
 		"@types/node": "^20.3.3",
+		"marked": "^15.0.2",
 		"mdpdf": "^3.0.4",
 		"rollup": "^3.23.0",
 		"rollup-plugin-copy": "^3.5.0",

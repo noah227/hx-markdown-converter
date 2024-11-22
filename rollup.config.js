@@ -6,7 +6,9 @@ const terser = require("@rollup/plugin-terser")
 const copyPlugin = require("rollup-plugin-copy")
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        preferBuiltins: true
+    }),
     // typescript(),
     commonjs(),
     pluginJson(),
@@ -22,14 +24,14 @@ const plugins = [
 // 打包后就可以舍弃node_modules了
 module.exports = [
     { 
-        input: "converter.src.js",
+        input: "./src/converter.js",
         output: {
 			dir: "./dist",
-			name: "converter.js",
             format: "cjs",
             exports: "auto",
             sourcemap: false
         },
+        external: ["semver", "@tootallnate/quickjs-emscripten", "marked"],
         plugins: [
             ...plugins
         ]

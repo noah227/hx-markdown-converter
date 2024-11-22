@@ -1,5 +1,6 @@
 var hx = require("hbuilderx");
-const converter = require("./dist/converter.src.js")
+const converter = require("./dist/converter.js")
+// const converter = require("./src/converter.js")
 
 //该方法将在插件激活的时候调用
 function activate(context) {

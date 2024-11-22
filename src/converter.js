@@ -1,4 +1,7 @@
 const mdpdf = require("mdpdf")
+const marked = require("marked")
+const fs = require("fs")
+const htmlToDocx = require("html-to-docx")
 
 const convertToPdfSingle = async (input, dest) => {
 	await mdpdf.convert({
@@ -11,12 +14,19 @@ const convertToPdfSingle = async (input, dest) => {
 	})
 }
 
-const convertToWordSingle = () => {
-
+const convertToWordSingle = async (input, dest) => {
+    const html = await convertToHtmlSingle(input, dest, false)
+    fs.writeFileSync(dest, await htmlToDocx(html, "", {}, ""))
 }
 
-const convertToHtmlSingle = () => {
+const convertToHtmlSingle = async (input, dest, writeToFile=true) => {
+    const html = marked.parse(fs.readFileSync(input, {encoding: "utf8"}))
+    if(!writeToFile) return html
+    writeToDest(dest, html)
+}
 
+const writeToDest = (dest, content) => {
+    fs.writeFileSync(dest, content, {encoding: "utf8"})
 }
 
 const path = require("path")
